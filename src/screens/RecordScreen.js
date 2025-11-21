@@ -69,7 +69,7 @@ export default function RecordScreen({ navigation }) {
       setIsPlaying(true);
 
       sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) {
+        if (status.isLoaded && status.didJustFinish) {
           setIsPlaying(false);
         }
       });

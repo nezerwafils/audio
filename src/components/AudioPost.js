@@ -49,7 +49,7 @@ export default function AudioPost({ post, currentUserId, onDelete, onUpdate }) {
         setIsPlaying(true);
 
         newSound.setOnPlaybackStatusUpdate((status) => {
-          if (status.didJustFinish) {
+          if (status.isLoaded && status.didJustFinish) {
             setIsPlaying(false);
           }
         });

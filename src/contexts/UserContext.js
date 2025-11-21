@@ -77,7 +77,7 @@ export const UserProvider = ({ children }) => {
       const offlineUser = {
         id: `offline-${Date.now()}`,
         username: generateUsername(),
-        avatarUrl: generateAvatar(username),
+        avatarUrl: generateAvatar(generateUsername()),
       };
       await AsyncStorage.setItem('currentUser', JSON.stringify(offlineUser));
       setUser(offlineUser);
