@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:web": "EXPO_ROUTER_APP_ROOT=app npx expo export -p web",
+    "build:web": "expo export:web",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -29,7 +29,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.6",
-    "zustand": "^4.4.7"
+    "zustand": "^4.4.7",
+    "@expo/webpack-config": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

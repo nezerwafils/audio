@@ -1,6 +1,8 @@
 {
-  "buildCommand": "EXPO_ROUTER_APP_ROOT=app npx expo export -p web",
+  "buildCommand": "npm run build:web",
   "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": null,
   "rewrites": [
     {
       "source": "/(.*)",
