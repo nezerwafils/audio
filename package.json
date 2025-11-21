@@ -1,7 +1,7 @@
 {
   "name": "audio-social",
   "version": "1.0.0",
-  "main": "expo-router-entry",
+  "main": "index.js",
   "description": "Audio-only social media app",
   "scripts": {
     "start": "expo start",
