@@ -23,11 +23,12 @@ export default function AudioPost({ post, currentUserId, onDelete, onUpdate }) {
   const [reportReason, setReportReason] = useState('');
 
   useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
+    return () => {
+      // Cleanup sound on unmount
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
   }, [sound]);
 
   const togglePlay = async () => {

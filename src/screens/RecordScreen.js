@@ -112,7 +112,7 @@ export default function RecordScreen({ navigation }) {
       const blob = await response.blob();
 
       // Upload to Supabase storage
-      const fileName = `audio_${user.id}_${Date.now()}.m4a`;
+      const fileName = `audio_${Date.now()}_${Math.random().toString(36).substring(7)}.m4a`;
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('audio')
         .upload(fileName, blob, {

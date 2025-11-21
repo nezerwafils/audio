@@ -60,7 +60,14 @@ export const UserProvider = ({ children }) => {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error creating user in Supabase:', error);
+        throw error;
+      }
+
+      if (!data) {
+        throw new Error('No data returned from user creation');
+      }
 
       const newUser = {
         id: data.id,

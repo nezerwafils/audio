@@ -56,11 +56,11 @@ export default function FeedScreen() {
         avatarUrl: post.users?.avatar_url,
         likesCount: post.likes?.filter(l => l.is_like).length || 0,
         dislikesCount: post.likes?.filter(l => !l.is_like).length || 0,
-        userLike: post.likes?.find(l => l.user_id === user?.id)?.is_like,
+        userLike: user?.id ? post.likes?.find(l => l.user_id === user.id)?.is_like : undefined,
         reactionsCount: post.reactions?.length || 0,
-        userReaction: post.reactions?.find(r => r.user_id === user?.id)?.reaction_type,
+        userReaction: user?.id ? post.reactions?.find(r => r.user_id === user.id)?.reaction_type : undefined,
         commentsCount: post.comments?.length || 0,
-        isBookmarked: post.bookmarks?.some(b => b.user_id === user?.id) || false,
+        isBookmarked: user?.id ? post.bookmarks?.some(b => b.user_id === user.id) : false,
       }));
 
       setPosts(processedPosts);
