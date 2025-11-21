@@ -99,6 +99,5 @@ CREATE POLICY "Users can view own bookmarks" ON bookmarks FOR SELECT USING (auth
 CREATE POLICY "Users can create bookmarks" ON bookmarks FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "Users can delete own bookmarks" ON bookmarks FOR DELETE USING (auth.uid() = user_id);
 
--- Reports: Users can create reports, admins can view all
+-- Reports: Users can create reports (reports are private, not viewable by public)
 CREATE POLICY "Users can create reports" ON reports FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "Reports are viewable by everyone" ON reports FOR SELECT USING (true);

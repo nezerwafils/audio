@@ -128,7 +128,29 @@ export async function uploadAudio(
   type: 'post' | 'comment' = 'post'
 ): Promise<string> {
   try {
-    const fileExt = 'mp3';
+    // Get file info to validate
+    const fileInfo = await FileSystem.getInfoAsync(uri);
+    
+    if (!fileInfo.exists) {
+      throw new Error('Audio file does not exist');
+    }
+
+    // Validate file size (max 10MB)
+    const maxSizeBytes = 10 * 1024 * 1024;
+    if (fileInfo.size && fileInfo.size > maxSizeBytes) {
+      throw new Error('Audio file too large. Maximum size is 10MB');
+    }
+
+    // Determine file extension from URI
+    const uriParts = uri.split('.');
+    const fileExt = uriParts[uriParts.length - 1] || 'm4a'; // Default to m4a (iOS default)
+    
+    // Validate audio extension
+    const validExtensions = ['m4a', 'mp3', 'wav', 'aac', 'caf'];
+    if (!validExtensions.includes(fileExt.toLowerCase())) {
+      throw new Error('Invalid audio file format');
+    }
+
     const fileName = `${userId}/${Date.now()}.${fileExt}`;
     const filePath = `${type}s/${fileName}`;
 
@@ -137,14 +159,24 @@ export async function uploadAudio(
       encoding: FileSystem.EncodingType.Base64,
     });
 
+    // Determine content type based on extension
+    const contentTypeMap: { [key: string]: string } = {
+      'm4a': 'audio/mp4',
+      'mp3': 'audio/mpeg',
+      'wav': 'audio/wav',
+      'aac': 'audio/aac',
+      'caf': 'audio/x-caf',
+    };
+    const contentType = contentTypeMap[fileExt.toLowerCase()] || 'audio/mpeg';
+
     // Convert base64 to blob
-    const blob = base64ToBlob(fileData, 'audio/mpeg');
+    const blob = base64ToBlob(fileData, contentType);
 
     // Upload to Supabase storage
     const { data, error } = await supabase.storage
       .from('audio-files')
       .upload(filePath, blob, {
-        contentType: 'audio/mpeg',
+        contentType,
         upsert: false,
       });
 
