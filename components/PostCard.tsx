@@ -30,7 +30,15 @@ export default function PostCard({
 }: PostCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [player] = useState(() => new AudioPlayer());
-  const [userReaction, setUserReaction] = useState<string | null>(null);
+  
+  // Initialize user reaction from post data
+  const getUserReaction = () => {
+    if (!currentUserId || !post.reactions) return null;
+    const userReactionObj = post.reactions.find(r => r.user_id === currentUserId);
+    return userReactionObj?.type || null;
+  };
+  
+  const [userReaction, setUserReaction] = useState<string | null>(getUserReaction());
 
   const isOwnPost = currentUserId === post.user_id;
 
