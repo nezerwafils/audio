@@ -1,0 +1,119 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #1a1a2e;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #6c5ce7;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  color: #6c5ce7;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #ffffff;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+.main {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: #6c5ce7;
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #6c5ce7;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  margin-bottom: 1.5rem;
+}
+
+.setupPrompt {
+  background: #1a1a2e;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.setupPrompt p {
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: inline-block;
+  background: #6c5ce7;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #5f51d8;
+  text-decoration: none;
+}
+
+.posts {
+  margin-top: 2rem;
+}
+
+.noPosts {
+  text-align: center;
+  color: #a0a0a0;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.post {
+  background: #1a1a2e;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  background: #1a1a2e;
+  padding: 1.5rem;
+  text-align: center;
+  color: #a0a0a0;
+  border-top: 1px solid #2a2a3e;
+}

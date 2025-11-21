@@ -1,12 +1,3 @@
 {
-  "buildCommand": "npm run build:web",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "nextjs"
 }

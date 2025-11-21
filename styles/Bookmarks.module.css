@@ -1,0 +1,51 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #0a0a0f;
+}
+
+.card {
+  background: #1a1a2e;
+  padding: 3rem;
+  border-radius: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card h1 {
+  font-size: 2rem;
+  color: #6c5ce7;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #a0a0a0;
+  margin-bottom: 2rem;
+}
+
+.bookmarks {
+  min-height: 200px;
+  margin-bottom: 2rem;
+}
+
+.empty {
+  text-align: center;
+  color: #a0a0a0;
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.button {
+  background: #6c5ce7;
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #5f51d8;
+}
