@@ -2,13 +2,14 @@ import { create } from 'zustand';
 import { User } from '../types';
 import { supabase } from '../supabase/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Session } from '@supabase/supabase-js';
 
 interface UserState {
   user: User | null;
-  session: any;
+  session: Session | null;
   loading: boolean;
   setUser: (user: User | null) => void;
-  setSession: (session: any) => void;
+  setSession: (session: Session | null) => void;
   signInAnonymously: () => Promise<void>;
   updateProfile: (username: string, avatarUrl?: string) => Promise<void>;
   signOut: () => Promise<void>;

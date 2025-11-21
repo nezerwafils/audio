@@ -4,6 +4,7 @@ import { supabase } from '../supabase/client';
 
 export class AudioRecorder {
   private recording: Audio.Recording | null = null;
+  private durationInterval: NodeJS.Timeout | null = null;
 
   async startRecording(): Promise<void> {
     try {
@@ -52,6 +53,17 @@ export class AudioRecorder {
 
   isRecording(): boolean {
     return this.recording !== null;
+  }
+
+  setDurationInterval(interval: NodeJS.Timeout | null): void {
+    this.durationInterval = interval;
+  }
+
+  clearDurationInterval(): void {
+    if (this.durationInterval) {
+      clearInterval(this.durationInterval);
+      this.durationInterval = null;
+    }
   }
 }
 

@@ -31,8 +31,11 @@ export function usePosts() {
           laugh: 0,
         };
 
-        post.reactions?.forEach((r: any) => {
-          reactionCounts[r.type as keyof typeof reactionCounts]++;
+        post.reactions?.forEach((r: { type: string; user_id: string }) => {
+          const reactionType = r.type as keyof typeof reactionCounts;
+          if (reactionType in reactionCounts) {
+            reactionCounts[reactionType]++;
+          }
         });
 
         return {

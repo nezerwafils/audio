@@ -39,8 +39,7 @@ export default function RecordButton({ onNeedProfile }: RecordButtonProps) {
         setRecordDuration(d => d + 1);
       }, 1000);
 
-      // Store interval ID to clear later
-      (recorder as any).durationInterval = interval;
+      recorder.setDurationInterval(interval);
     } catch (error) {
       console.error('Error starting recording:', error);
       Alert.alert('Error', 'Failed to start recording');
@@ -49,7 +48,7 @@ export default function RecordButton({ onNeedProfile }: RecordButtonProps) {
 
   const handleStopRecording = async () => {
     try {
-      clearInterval((recorder as any).durationInterval);
+      recorder.clearDurationInterval();
       const uri = await recorder.stopRecording();
       
       if (!uri) {
@@ -82,7 +81,7 @@ export default function RecordButton({ onNeedProfile }: RecordButtonProps) {
 
   const handleCancel = () => {
     if (isRecording) {
-      clearInterval((recorder as any).durationInterval);
+      recorder.clearDurationInterval();
       recorder.stopRecording();
       setIsRecording(false);
     }

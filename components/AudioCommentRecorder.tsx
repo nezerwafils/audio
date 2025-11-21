@@ -36,7 +36,7 @@ export default function AudioCommentRecorder({
         setRecordDuration(d => d + 1);
       }, 1000);
 
-      (recorder as any).durationInterval = interval;
+      recorder.setDurationInterval(interval);
     } catch (error) {
       console.error('Error starting recording:', error);
       Alert.alert('Error', 'Failed to start recording');
@@ -45,7 +45,7 @@ export default function AudioCommentRecorder({
 
   const handleStopRecording = async () => {
     try {
-      clearInterval((recorder as any).durationInterval);
+      recorder.clearDurationInterval();
       const uri = await recorder.stopRecording();
       
       if (!uri) {
@@ -75,7 +75,7 @@ export default function AudioCommentRecorder({
 
   const handleCancel = () => {
     if (isRecording) {
-      clearInterval((recorder as any).durationInterval);
+      recorder.clearDurationInterval();
       recorder.stopRecording();
       setIsRecording(false);
     }
